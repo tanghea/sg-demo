@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.alibaba:dubbo:2.8.4.RELEASE">
+    <CLASSES>
+      <root url="jar://D:/DevTool/repository/Maven/Maven3.2.2/local/repo/com/alibaba/dubbo/2.8.4.RELEASE/dubbo-2.8.4.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/DevTool/repository/Maven/Maven3.2.2/local/repo/com/alibaba/dubbo/2.8.4.RELEASE/dubbo-2.8.4.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/DevTool/repository/Maven/Maven3.2.2/local/repo/com/alibaba/dubbo/2.8.4.RELEASE/dubbo-2.8.4.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

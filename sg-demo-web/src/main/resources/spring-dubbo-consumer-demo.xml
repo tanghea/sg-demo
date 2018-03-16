@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- dubbo 配置 -->
+	<!-- 应用名 -->
+	<dubbo:application name="sg-demo"/>
+	<!-- 消费方用dubbo协议获取服务 -->
+	<dubbo:protocol name="dubbo" port="-1"></dubbo:protocol>
+	<!-- 连接注册中心 -->
+	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}"  timeout="35000" check="false" />
+	<!-- 提供哪些接口给消费者调用 -->
+	<dubbo:reference interface="com.yonyou.sg.basedoc.basedata.api.IDemoService" id="iDemoService"
+					 group="${dubbo.basedoc.group}" check="false" retries="0" timeout="50000"/>
+</beans>
+

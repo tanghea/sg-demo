@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.yonyou.uap.bpm:ubpm-rest-sdk:2.5">
+    <CLASSES>
+      <root url="jar://D:/DevTool/repository/Maven/Maven3.2.2/local/repo/com/yonyou/uap/bpm/ubpm-rest-sdk/2.5/ubpm-rest-sdk-2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/DevTool/repository/Maven/Maven3.2.2/local/repo/com/yonyou/uap/bpm/ubpm-rest-sdk/2.5/ubpm-rest-sdk-2.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/DevTool/repository/Maven/Maven3.2.2/local/repo/com/yonyou/uap/bpm/ubpm-rest-sdk/2.5/ubpm-rest-sdk-2.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

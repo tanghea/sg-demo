@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/rabbit
+	http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+    <!--<context:property-placeholder-->
+            <!--ignore-unresolvable="true" location="classpath*:serviceconfig.properties" />-->
+    <!-- 连接服务配置  -->
+    <rabbit:connection-factory id="connectionFactory" addresses="${solr.mq.addresses}" username="${solr.mq.username}"
+                               password="${solr.mq.password}"/>
+
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!-- queue 队列声明  -->
+    <rabbit:queue id="solr_update_queue" durable="true" auto-delete="false" exclusive="false" name="solr_update_queue"/>
+
+    <!-- 1688的direct exchange -->
+    <rabbit:direct-exchange name="exchange_solr_update" durable="true" auto-delete="false" id="exchange_solr_update">
+        <rabbit:bindings>
+            <rabbit:binding key="solr_update" queue="solr_update_queue"></rabbit:binding>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+    
+    <!-- 注册Listener -->
+    <!--<rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto" prefetch="100" concurrency="5"-->
+                               <!--max-concurrency="30">-->
+        <!--<rabbit:listener queues="solr_update_queue" ref="solrMsgListener"/>-->
+    <!--</rabbit:listener-container>-->
+
+
+</beans>

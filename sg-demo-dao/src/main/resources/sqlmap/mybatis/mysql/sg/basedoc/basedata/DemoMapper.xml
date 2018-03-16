@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="demo" >
+  <resultMap id="BaseResultMap" type="com.yonyou.sg.basedoc.basedata.domain.Demo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="dr" property="dr" jdbcType="INTEGER" />
+    <result column="business_status" property="businessStatus" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <sql id="Base_Column_List" >
+    id, code, name, dr, business_status
+  </sql>
+  <sql id="query_condition" >
+    <if test="businessStatus != '' ">
+      and business_status = #{businessStatus}
+    </if>
+  </sql>
+  <!--分页查询 begin-->
+  <select id="getDemoCount" parameterType="com.yonyou.sg.basedoc.basedata.domain.Demo" resultType="java.lang.Integer" >
+    select count(*) from demo where dr=0
+    <include refid="query_condition"/>
+  </select>
+  <select id="selectDemo" parameterType="com.yonyou.sg.basedoc.basedata.domain.Demo" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM demo
+    WHERE dr=0
+    <include refid="query_condition"/>
+    <include refid="com.yonyou.cpu.commons.dao.CommonMapper.pagingLimit"/>
+  </select>
+  <!--分页查询 end-->
+
+  <!--获取各tab的数据条数-->
+  <select id="getStateItems"  resultType="java.util.Map" parameterType="com.yonyou.sg.basedoc.basedata.domain.Demo">
+  SELECT business_status businessStatus,COUNT(business_status) businessStatusCount
+  FROM demo WHERE dr=0 GROUP BY business_status
+  </select>
+
+  <!--保存-->
+  <insert id="save" parameterType="com.yonyou.sg.basedoc.basedata.domain.Demo" >
+    INSERT INTO demo( code, name, dr, business_status)
+    VALUES (#{code}, #{name}, 0, #{businessStatus})
+    <selectKey resultType="java.lang.Long" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID() AS id
+    </selectKey>
+  </insert>
+
+  <!--批量保存-->
+  <insert id="saveBatch" parameterType="java.util.List"  useGeneratedKeys="true"  keyProperty="id"  >
+    INSERT INTO demo(code, name, dr, business_status)
+    VALUES
+    <foreach item="details" collection="list" index="index" separator=",">
+      (#{details.code}, #{details.name}, 0, #{details.businessStatus})
+    </foreach>
+  </insert>
+
+  <!--批量删除-->
+  <update id="delete" parameterType="java.util.List">
+    <foreach item="pks" collection="list"  index="index" open="" close="" separator=";">
+    update demo set dr=1 where id=#{pks}
+    </foreach>
+  </update>
+
+  <!--修改-->
+  <update id="update"  parameterType="com.yonyou.sg.basedoc.basedata.domain.Demo">
+    UPDATE demo
+    <set>
+      <if test="code != null">
+        code = #{code},
+      </if>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="businessStatus != null">
+        business_status = #{businessStatus}
+      </if>
+    </set>
+    WHERE id = #{id} and dr=0
+  </update>
+</mapper>

@@ -1,0 +1,768 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.yonyou.sg</groupId>
+    <artifactId>sg-demo</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>sg-demo-service</module>
+        <module>sg-demo-dao</module>
+        <module>sg-demo-api</module>
+        <module>sg-demo-domain</module>
+        <module>sg-demo-web</module>
+    </modules>
+
+    <profiles>
+        <profile>
+            <id>develop</id>
+            <properties>
+                <env>develop</env>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>test</id>
+            <properties>
+                <env>test</env>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>release</id>
+            <properties>
+                <env>release</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>show</id>
+            <properties>
+                <env>show</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <env>prod</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>demo</id>
+            <properties>
+                <env>demo</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>mallshow</id>
+            <properties>
+                <env>mallshow</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>mallshowdev</id>
+            <properties>
+                <env>mallshowdev</env>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>showdev</id>
+            <properties>
+                <env>showdev</env>
+            </properties>
+        </profile>
+    </profiles>
+
+    <properties>
+        <build.file.encoding>UTF-8</build.file.encoding>
+        <cpu.common.version>1.0.0-SNAPSHOT</cpu.common.version>
+        <cpu.version>1.0.1-rc1</cpu.version>
+        <jsp.version>2.0</jsp.version>
+        <servlet-api.version>6.1.5</servlet-api.version>
+        <spring.version>3.2.9.RELEASE</spring.version>
+        <mybatis.version>3.3.1</mybatis.version>
+        <junit.version>4.5</junit.version>
+        <dubbo.version>2.8.4.RELEASE</dubbo.version>
+        <zkclient.version>0.1</zkclient.version>
+        <zookeeper.version>3.4.6</zookeeper.version>
+        <tomcat-jdbc.version>7.0.53</tomcat-jdbc.version>
+        <aspectj.version>1.6.11</aspectj.version>
+        <aspectj1.version>1.6.11</aspectj1.version>
+        <jdbc.driver.groupId>org.postgresql</jdbc.driver.groupId>
+        <jdbc.driver.artifactId>postgresql</jdbc.driver.artifactId>
+        <jdbc.driver.version>9.4-1205-jdbc4</jdbc.driver.version>
+        <uap.version>0.9-SNAPSHOT</uap.version>
+        <mybatis-spring.version>1.2.3</mybatis-spring.version>
+        <springside.version>4.3.0-RELEASE</springside.version>
+        <commons-codec.version>1.9</commons-codec.version>
+        <shiro.version>1.2.4</shiro.version>
+        <esapi.version>2.1.0</esapi.version>
+        <oauth2.version>1.0.0</oauth2.version>
+        <cpu-common.version>1.0.0-SNAPSHOT</cpu-common.version>
+        <mysql.driver.version>5.1.18</mysql.driver.version>
+        <logback.version>1.1.2</logback.version>
+        <slf4j.version>1.6.4</slf4j.version>
+        <privilege.version>1.0.0-rc1</privilege.version>
+        <spring.amqp.version>1.4.1.RELEASE</spring.amqp.version>
+        <bizrelation.version>1.0.0-rc1</bizrelation.version>
+        <search.version>1.0.3-rc1</search.version>
+        <jackson.version>2.4.0</jackson.version>
+        <integration.version>1.0.0-RC001</integration.version>
+        <basedoc.version>1.0.1-SNAPSHOT</basedoc.version>
+        <!-- yuncai begin -->
+        <cpu.version>1.0.0-rc1</cpu.version>
+        <cpu-common.version>1.0.0-SNAPSHOT</cpu-common.version>
+        <cpu-common-dao.version>1.0.0-SNAPSHOT</cpu-common-dao.version>
+        <cpu-common-domain.version>1.0.0-SNAPSHOT</cpu-common-domain.version>
+        <cpu-common-redis.version>1.0.0-SNAPSHOT</cpu-common-redis.version>
+
+        <mobileadaptor.version>1.0.0-rc1</mobileadaptor.version>
+        <supplierbid.version>1.0.0-SNAPSHOT</supplierbid.version>
+        <!-- yuncai end -->
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <dependency>
+                <groupId>commons-pool</groupId>
+                <artifactId>commons-pool</artifactId>
+                <version>2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>cpu-privilege-api</artifactId>
+                <version>${privilege.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>cpu-common-domain</artifactId>
+                <version>${cpu-common-domain.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>cpu-common-redis</artifactId>
+                <version>${cpu-common-redis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>cpu-common-utils</artifactId>
+                <version>${cpu-common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>cpu-common-dao</artifactId>
+                <version>${cpu-common.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>log4j</groupId>
+                        <artifactId>log4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- 业务模块依赖 -->
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>cpu-ecservice-api</artifactId>
+                <version>${ecservice.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>cpu-project-def-api</artifactId>
+                <version>${cpu.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.yuncai</groupId>
+                <artifactId>cpu-supplierbid-api</artifactId>
+                <version>${supplierbid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.yuncai.cpu</groupId>
+                <artifactId>cpu-mobileadaptor-api</artifactId>
+                <version>${mobileadaptor.version}</version>
+            </dependency>
+            <dependency>
+                <artifactId>cpu-basedoc-api</artifactId>
+                <groupId>com.yonyou</groupId>
+                <version>${basedoc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.yuncai</groupId>
+                <artifactId>cpu-supplierbid-api</artifactId>
+                <version>${supplierbid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.yuncai</groupId>
+                <artifactId>cpu-bidnotice-api</artifactId>
+                <version>${supplierbid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>cpu-buyoffer-api</artifactId>
+                <version>${buyoffer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou</groupId>
+                <artifactId>cpu-price-api</artifactId>
+                <version>${price.version}</version>
+            </dependency>
+            <!-- iweb依赖 -->
+            <dependency>
+                <groupId>com.yonyou.iuap</groupId>
+                <artifactId>iuap-iweb</artifactId>
+                <version>3.0.0-RC001</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.iuap</groupId>
+                <artifactId>jetty-webapp</artifactId>
+                <version>3.0.0-RC001</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.iuap</groupId>
+                <artifactId>iuap-log</artifactId>
+                <version>3.0.0-RC001</version>
+            </dependency>
+            <dependency>
+                <groupId>com.yonyou.iuap</groupId>
+                <artifactId>iuap-event</artifactId>
+                <version>3.0.0-RC001</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>${jsp.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <scope>provided</scope>
+                <version>${servlet-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.0.1</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- jinjy用户中心sdk -->
+            <dependency>
+                <groupId>com.yonyou.iuap</groupId>
+                <artifactId>tenant-integration</artifactId>
+                <version>${integration.version}</version>
+            </dependency>
+
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>1.2.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.jsqlparser</groupId>
+                <artifactId>jsqlparser</artifactId>
+                <version>0.9.4</version>
+            </dependency>
+            <!-- SPRINGSIDE -->
+            <dependency>
+                <groupId>io.springside</groupId>
+                <artifactId>springside-core</artifactId>
+                <version>${springside.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springside</groupId>
+                <artifactId>springside-redis</artifactId>
+                <version>${springside.version}</version>
+            </dependency>
+
+
+            <dependency>
+                <groupId>net.sf.json-lib</groupId>
+                <artifactId>json-lib</artifactId>
+                <version>2.4</version>
+            </dependency>
+            <!-- spring -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!--spring end-->
+            <!-- spring data access -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>1.6.0.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-core</artifactId>
+                <version>3.6.9</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-apt</artifactId>
+                <version>3.6.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.mysema.querydsl</groupId>
+                <artifactId>querydsl-jpa</artifactId>
+                <version>3.6.9</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hibernate.javax.persistence</groupId>
+                        <artifactId>hibernate-jpa-2.0-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- dubbox start-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.sgroschupf</groupId>
+                <artifactId>zkclient</artifactId>
+                <version>${zkclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>${zookeeper.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>slf4j-log4j12</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- connection pool -->
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-jdbc</artifactId>
+                <version>${tomcat-jdbc.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- jdbc driver -->
+            <dependency>
+                <groupId>${jdbc.driver.groupId}</groupId>
+                <artifactId>${jdbc.driver.artifactId}</artifactId>
+                <version>${jdbc.driver.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- spring aop -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>3.2.3.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${aspectj1.version}</version>
+            </dependency>
+            <!-- SOAP begin -->
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxws</artifactId>
+                <version>3.1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>3.1.4</version>
+            </dependency>
+            <!-- SOAP end -->
+            <!-- JAX-RS begin -->
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-frontend-jaxrs</artifactId>
+                <version>3.1.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-json-provider</artifactId>
+                <version>2.4.0</version>
+            </dependency>
+            <!-- JAX-RS end -->
+
+            <!-- SECURITY begin -->
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-ehcache</artifactId>
+                <version>${shiro.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${commons-codec.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.owasp.esapi</groupId>
+                <artifactId>esapi</artifactId>
+                <version>${esapi.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- SECURITY end -->
+
+            <!-- JSR303 BeanValidator -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>5.2.2.Final</version>
+            </dependency>
+
+            <!-- JSON begin -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>2.5.1</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-jaxb-annotations</artifactId>
+                <version>2.5.1</version>
+            </dependency>
+            <!-- JSON end -->
+
+
+
+            <!-- LOGGING begin -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.7.13</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!-- 代码直接调用log4j会被桥接到slf4j -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>1.7.13</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- 代码直接调用common-logging会被桥接到slf4j -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jcl-over-slf4j</artifactId>
+                <version>1.7.13</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- 代码直接调用java.util.logging会被桥接到slf4j -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>jul-to-slf4j</artifactId>
+                <version>1.7.13</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.googlecode.log4jdbc</groupId>
+                <artifactId>log4jdbc</artifactId>
+                <version>1.2</version>
+                <scope>runtime</scope>
+            </dependency>
+            <!-- LOGGING end -->
+
+            <!-- GENERAL UTILS begin -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.4</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>19.0</version>
+            </dependency>
+            <!-- GENERAL UTILS end -->
+            <!-- TEST begin -->
+            <dependency>
+                <groupId>io.springside</groupId>
+                <artifactId>springside-core</artifactId>
+                <version>4.3.0-RELEASE</version>
+                <classifier>tests</classifier>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.12</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>3.2.0</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>1.10.19</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>2.6.1</version>
+            </dependency>
+            <!-- jetty -->
+            <dependency>
+                <groupId>org.eclipse.jetty.aggregate</groupId>
+                <artifactId>jetty-webapp</artifactId>
+                <version>8.1.6.v20120903</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-jsp</artifactId>
+                <version>8.1.6.v20120903</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>javax.servlet</groupId>
+                        <artifactId>servlet-api</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- TEST end -->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.23</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.5.2</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-httpclient</groupId>
+                <artifactId>commons-httpclient</artifactId>
+                <version>3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-fileupload</groupId>
+                <artifactId>commons-fileupload</artifactId>
+                <version>1.3.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-rabbit</artifactId>
+                <version>1.4.1.RELEASE</version>
+            </dependency>
+
+            <!-- oauth2-->
+            <dependency>
+                <groupId>org.apache.oltu.oauth2</groupId>
+                <artifactId>org.apache.oltu.oauth2.authzserver</artifactId>
+                <version>${oauth2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.oltu.oauth2</groupId>
+                <artifactId>org.apache.oltu.oauth2.resourceserver</artifactId>
+                <version>${oauth2.version}</version>
+            </dependency>
+            <!-- hibernate 用于动态生成id -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-entitymanager</artifactId>
+                <version>5.0.6.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.curator</groupId>
+                <artifactId>curator-recipes</artifactId>
+                <version>2.5.0</version>
+            </dependency>
+            <!-- uap 权限组件 -->
+            <!-- <dependency>
+              <groupId>com.yonyou</groupId>
+              <artifactId>yonyou-security-core</artifactId>
+              <version>0.0.7-SNAPSHOT</version>
+            </dependency> -->
+            <!-- 单点登录 -->
+            <dependency>
+                <groupId>org.jasig.cas.client</groupId>
+                <artifactId>cas-client-core</artifactId>
+                <version>3.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.driver.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <!-- package jar with full name -->
+        <!--<finalName>${artifactId}</finalName> -->
+        <filters>
+            <filter>../profiles-${env}.properties</filter>
+        </filters>
+        <!--<finalName>o2o-standard-project-service</finalName>-->
+        <defaultGoal>package</defaultGoal>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <distributionManagement>
+        <!-- 测试库 -->
+        <snapshotRepository>
+            <id>nccloud-snapshots</id>
+            <name>nccloud Snapshots Repository</name>
+            <url>http://maven.yonyou.com/nexus/content/repositories/nccloud-snapshots/</url>
+        </snapshotRepository>
+
+        <!-- 预发版库 -->
+        <repository>
+            <id>nccloud-stagings</id>
+            <name>nccloud Staging Repository</name>
+            <url>http://maven.yonyou.com/nexus/content/repositories/nccloud-stagings/</url>
+        </repository>
+    </distributionManagement>
+</project>
